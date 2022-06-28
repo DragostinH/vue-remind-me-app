@@ -1,26 +1,39 @@
-<template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
-</template>
-
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import TheHeader from "./components/layouts/TheHeader.vue";
+import StoredResources from "./components/learning-resources/StoredResources.vue";
+import TheResources from "./components/learning-resources/TheResources.vue";
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+  data() {
+    return {
+      resources: [
+        {
+          id: "1",
+          title: "OneTitle",
+          description: "OneDescription",
+          link: "https://onelink.com",
+        },
+        {
+          id: "2",
+          title: "TwoTitle",
+          description: "TwoDescription",
+          link: "https://twolink.com",
+        },
+      ],
+    };
+  },
+  components: { TheHeader, StoredResources, TheResources },
+};
 </script>
 
+
+<template>
+  <div class="app-wrapper bg-primary-600 h-screen">
+    <TheHeader />
+    <TheResources />
+    <StoredResources :resources="resources" />
+  </div>
+</template>
+
+
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>
